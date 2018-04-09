@@ -38,7 +38,6 @@ namespace MultiNotes.Server.Gateway.Api.Config
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowAnyOrigin());
-
         }
 
         // ConfigureContainer is where you can register things directly

@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiNotes.Server.Gateway.Services.Interfaces;
 using MultiNotes.Server.Users.ObjectModel.Dto;
+using MultiNotes.Server.Users.ObjectModel.Exceptions;
 
 namespace MultiNotes.Server.Gateway.Api.Controllers
 {
     //todo: add authorization
-    //todo: error handling
+    //todo: generic error handling
     [Produces("application/json")]
     [Route("api/User")]
     public class UserController : Controller
@@ -24,14 +25,21 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
 
         [HttpGet]
         [Route("{userId}")]
-        public IActionResult GetUser(int userId)
+        public IActionResult Get(int userId)
         {
-            var user = _userService.GetUser(userId);
-            return Ok(user);
+            try
+            {
+                var user = _userService.GetUser(userId);
+                return Ok(user);
+            }
+            catch (UserNotFoundException unfe)
+            {
+                return NotFound(unfe.Message);
+            }
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromBody] UserToAddDto userToAddDto)
+        public IActionResult Post([FromBody] UserToAddDto userToAddDto)
         {
             var user = _userService.AddUser(userToAddDto);
             return Ok(user);
@@ -39,10 +47,32 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
 
         [HttpPut]
         [Route("{userId}")]
-        public IActionResult UpdateUser(int userId, [FromBody] UserDto userDto)
+        public IActionResult Update(int userId, [FromBody] UserDto userDto)
         {
-            var user = _userService.UpdateUser(userId, userDto);
-            return Ok(user);
+            try
+            {
+                var user = _userService.UpdateUser(userId, userDto);
+                return Ok(user);
+            }
+            catch (UserNotFoundException unfe)
+            {
+                return NotFound(unfe.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{userId")]
+        public IActionResult Delete(int userId)
+        {
+            try
+            {
+                _userService.DeleteUser(userId);
+                return NoContent();
+            }
+            catch (UserNotFoundException unfe)
+            {
+                return NotFound(unfe.Message);
+            }
         }
     }
 }

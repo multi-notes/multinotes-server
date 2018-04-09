@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Gateway.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Users.ObjectModel", "MultiNotes.Server.Users\MultiNotes.Server.Users.ObjectModel\MultiNotes.Server.Users.ObjectModel.csproj", "{BCDED417-AC20-48B1-9386-B11EDF760B92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiNotes.Server.Gateway.Services.Test.Unit", "MultiNotes.Server.Gateway.Services.Test.Unit\MultiNotes.Server.Gateway.Services.Test.Unit.csproj", "{3BC99761-7992-46C1-A46A-46611E6B7C91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Common", "MultiNotes.Server.Common\MultiNotes.Server.Common.csproj", "{EF47114D-0C24-40D5-88F6-1A7CD9E5B5B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Gateway.Services.Test.Unit", "MultiNotes.Server.Gateway\MultiNotes.Server.Gateway.Services.Test.Unit\MultiNotes.Server.Gateway.Services.Test.Unit.csproj", "{6DD2A923-21CB-47AB-BC64-600C37E27AD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,14 @@ Global
 		{BCDED417-AC20-48B1-9386-B11EDF760B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCDED417-AC20-48B1-9386-B11EDF760B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCDED417-AC20-48B1-9386-B11EDF760B92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BC99761-7992-46C1-A46A-46611E6B7C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BC99761-7992-46C1-A46A-46611E6B7C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BC99761-7992-46C1-A46A-46611E6B7C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BC99761-7992-46C1-A46A-46611E6B7C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF47114D-0C24-40D5-88F6-1A7CD9E5B5B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF47114D-0C24-40D5-88F6-1A7CD9E5B5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF47114D-0C24-40D5-88F6-1A7CD9E5B5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF47114D-0C24-40D5-88F6-1A7CD9E5B5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD2A923-21CB-47AB-BC64-600C37E27AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD2A923-21CB-47AB-BC64-600C37E27AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD2A923-21CB-47AB-BC64-600C37E27AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD2A923-21CB-47AB-BC64-600C37E27AD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
