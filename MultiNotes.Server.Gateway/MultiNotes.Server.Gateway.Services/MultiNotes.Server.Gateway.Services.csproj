@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MultiNotes.Server.Notes\MultiNotes.Server.Notes.ObjectModel\MultiNotes.Server.Notes.ObjectModel.csproj" />
+    <ProjectReference Include="..\..\MultiNotes.Server.Users\MultiNotes.Server.Users.ObjectModel\MultiNotes.Server.Users.ObjectModel.csproj" />
+  </ItemGroup>
+
+</Project>
