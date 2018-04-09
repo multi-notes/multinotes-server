@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace MultiNotes.Server
+namespace MultiNotes.Server.Gateway.Api
 {
     public class Startup
     {

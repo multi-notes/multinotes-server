@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MultiNotes.Server.Controllers
+namespace MultiNotes.Server.Gateway.Api.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

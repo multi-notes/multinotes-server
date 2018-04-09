@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MultiNotes.Server.Services
+namespace MultiNotes.Server.Auth.ObjectModel
 {
     public class Class1
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MultiNotes.Server.ObjectModel
+namespace MultiNotes.Server.Notes.ObjectModel
 {
     public class Class1
     {

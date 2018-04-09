@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace MultiNotes.Server
+namespace MultiNotes.Server.Gateway.Api
 {
     public class Program
     {
