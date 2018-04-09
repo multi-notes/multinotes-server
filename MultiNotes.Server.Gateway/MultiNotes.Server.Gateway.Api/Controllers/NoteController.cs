@@ -10,6 +10,7 @@ using MultiNotes.Server.Notes.ObjectModel.Dto;
 namespace MultiNotes.Server.Gateway.Api.Controllers
 {
     //todo: add authorization
+    //todo: error handling
     [Produces("application/json")]
     [Route("api")]
     public class NoteController : Controller
