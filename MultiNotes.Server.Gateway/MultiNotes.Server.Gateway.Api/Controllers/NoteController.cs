@@ -80,7 +80,7 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
         {
             try
             {
-                var note = _noteService.UpdateUserNote(userId, noteToUpdate);
+                var note = _noteService.UpdateUserNote(userId, noteId, noteToUpdate);
                 return Ok(note);
             }
             catch (UserNotFoundException unfe)

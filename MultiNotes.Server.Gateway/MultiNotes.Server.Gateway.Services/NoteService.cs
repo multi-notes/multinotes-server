@@ -23,7 +23,7 @@ namespace MultiNotes.Server.Gateway.Services
             throw new NotImplementedException();
         }
 
-        public NoteDto UpdateUserNote(int userId, NoteDto noteDto)
+        public NoteDto UpdateUserNote(int userId, int noteId, NoteDto noteDto)
         {
             throw new NotImplementedException();
         }
