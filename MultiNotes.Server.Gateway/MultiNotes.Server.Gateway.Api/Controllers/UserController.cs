@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MultiNotes.Server.Common.Exceptions;
 using MultiNotes.Server.Gateway.Services.Interfaces;
 using MultiNotes.Server.Users.ObjectModel.Dto;
 using MultiNotes.Server.Users.ObjectModel.Exceptions;
@@ -41,8 +42,15 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] UserToAddDto userToAddDto)
         {
-            var user = _userService.AddUser(userToAddDto);
-            return Ok(user);
+            try
+            {
+                var user = _userService.AddUser(userToAddDto);
+                return Ok(user);
+            }
+            catch (ItemAlreadyExistsException iaee)
+            {
+                return BadRequest(iaee.Message);
+            }
         }
 
         [HttpPut]
