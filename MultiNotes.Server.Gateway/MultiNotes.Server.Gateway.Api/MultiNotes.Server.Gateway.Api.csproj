@@ -5,16 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MultiNotes.Server.Notes\MultiNotes.Server.Notes.ObjectModel\MultiNotes.Server.Notes.ObjectModel.csproj" />
+    <ProjectReference Include="..\..\MultiNotes.Server.Users\MultiNotes.Server.Users.ObjectModel\MultiNotes.Server.Users.ObjectModel.csproj" />
+    <ProjectReference Include="..\MultiNotes.Server.Gateway.Services\MultiNotes.Server.Gateway.Services.csproj" />
   </ItemGroup>
 
 </Project>

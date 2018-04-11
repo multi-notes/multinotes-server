@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MultiNotes.Server.Auth
+namespace MultiNotes.Server.Users
 {
     class Program
     {

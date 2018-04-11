@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Users", "MultiNotes.Server.Users\MultiNotes.Server.Users\MultiNotes.Server.Users.csproj", "{0D5BDAEF-2E1C-4EE2-B741-7F69A41A77B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiNotes.Server.Users.ObjectModel", "MultiNotes.Server.Users\MultiNotes.Server.Users.ObjectModel\MultiNotes.Server.Users.ObjectModel.csproj", "{C4C529CF-2378-4FE7-B5D3-949520046DF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D5BDAEF-2E1C-4EE2-B741-7F69A41A77B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5BDAEF-2E1C-4EE2-B741-7F69A41A77B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5BDAEF-2E1C-4EE2-B741-7F69A41A77B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5BDAEF-2E1C-4EE2-B741-7F69A41A77B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4C529CF-2378-4FE7-B5D3-949520046DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4C529CF-2378-4FE7-B5D3-949520046DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4C529CF-2378-4FE7-B5D3-949520046DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4C529CF-2378-4FE7-B5D3-949520046DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {558C4FE8-33CA-40AE-BDAD-5087C2B93899}
+	EndGlobalSection
+EndGlobal
