@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MultiNotes.Server.Users.Services.Interfaces;
+﻿using MultiNotes.Server.Users.Services.Interfaces;
 
 namespace MultiNotes.Server.Users.Services
 {

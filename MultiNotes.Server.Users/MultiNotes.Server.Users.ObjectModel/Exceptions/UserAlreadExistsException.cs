@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MultiNotes.Server.Common.Exceptions;
+﻿using MultiNotes.Server.Common.Exceptions;
 
 namespace MultiNotes.Server.Users.ObjectModel.Exceptions
 {

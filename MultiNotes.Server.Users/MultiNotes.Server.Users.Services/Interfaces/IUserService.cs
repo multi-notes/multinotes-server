@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MultiNotes.Server.Users.ObjectModel;
+﻿using MultiNotes.Server.Users.ObjectModel;
 using MultiNotes.Server.Users.ObjectModel.Dto;
 
 namespace MultiNotes.Server.Users.Services.Interfaces

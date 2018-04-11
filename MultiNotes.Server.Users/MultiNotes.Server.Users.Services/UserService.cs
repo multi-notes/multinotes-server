@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Mail;
-using System.Text;
 using MultiNotes.Server.Users.DataAccess.Interfaces;
 using MultiNotes.Server.Users.ObjectModel;
 using MultiNotes.Server.Users.ObjectModel.Dto;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MultiNotes.Server.Users.ObjectModel.Dto
 {
