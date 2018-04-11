@@ -21,6 +21,10 @@ namespace MultiNotes.Server.Gateway.Api
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseUrls("http://*:5001")
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .ConfigureServices(services => services.AddAutofac()) //todo: check if its gonna work when moved to configureServices
                 .UseStartup<Startup>()
                 .Build();
