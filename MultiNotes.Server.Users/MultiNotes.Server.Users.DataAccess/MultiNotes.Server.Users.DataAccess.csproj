@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MultiNotes.Server.Users.ObjectModel\MultiNotes.Server.Users.ObjectModel.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="2.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MultiNotes.Server.Users.DataAccess\MultiNotes.Server.Users.DataAccess.csproj" />
+    <ProjectReference Include="..\MultiNotes.Server.Users.ObjectModel\MultiNotes.Server.Users.ObjectModel.csproj" />
+  </ItemGroup>
+
 </Project>
