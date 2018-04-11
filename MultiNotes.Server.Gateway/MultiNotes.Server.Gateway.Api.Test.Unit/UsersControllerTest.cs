@@ -13,15 +13,15 @@ using Xunit;
 
 namespace MultiNotes.Server.Gateway.Api.Test.Unit
 {
-    public class UserControllerTest
+    public class UsersControllerTest
     {
-        private readonly UserController _userController;
+        private readonly UsersController _usersController;
         private readonly Mock<IUserService> _userServiceMock;
 
-        public UserControllerTest()
+        public UsersControllerTest()
         {
             _userServiceMock = new Mock<IUserService>();
-            _userController = new UserController(_userServiceMock.Object);
+            _usersController = new UsersController(_userServiceMock.Object);
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.AddUser(It.IsAny<UserToAddDto>()))
                 .Returns(exampleUserDto);
 
-            var result = _userController.Get(exampleUserId);
+            var result = _usersController.Get(exampleUserId);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -50,7 +50,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.AddUser(It.IsAny<UserToAddDto>()))
                 .Throws(new UserNotFoundException());
 
-            var result = _userController.Get(exampleUserId);
+            var result = _usersController.Get(exampleUserId);
 
             Assert.NotNull(result);
             Assert.IsType<NotFoundObjectResult>(result);
@@ -66,7 +66,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.AddUser(It.IsAny<UserToAddDto>()))
                 .Returns(exampleUserDto);
 
-            var result = _userController.Post(exampleUserAddDto);
+            var result = _usersController.Post(exampleUserAddDto);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -82,7 +82,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.AddUser(It.IsAny<UserToAddDto>()))
                 .Returns(exampleUserDto);
 
-            var result = _userController.Post(exampleUserAddDto);
+            var result = _usersController.Post(exampleUserAddDto);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -98,7 +98,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.UpdateUser(It.IsAny<int>(), It.IsAny<UserDto>()))
                 .Returns(exampleUserDto);
 
-            var result = _userController.Update(exampleUserId, exampleUserDto);
+            var result = _usersController.Update(exampleUserId, exampleUserDto);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -112,7 +112,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
             _userServiceMock
                 .Setup(x=>x.DeleteUser(It.IsAny<int>()));
 
-            _userController.Delete(exampleUserId);
+            _usersController.Delete(exampleUserId);
         }
     }
 }

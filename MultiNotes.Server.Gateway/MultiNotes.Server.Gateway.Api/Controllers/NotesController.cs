@@ -16,17 +16,17 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
     //todo: error handling for generic exception
     [Produces("application/json")]
     [Route("api")]
-    public class NoteController : Controller
+    public class NotesController : Controller
     {
         private readonly INoteService _noteService;
 
-        public NoteController(INoteService noteService)
+        public NotesController(INoteService noteService)
         {
             _noteService = noteService;
         }
 
         [HttpGet]
-        [Route("User/{userId}/Note")]
+        [Route("Users/{userId}/Notes")]
         public IActionResult GetAllNotes(int userId)
         {
             try
@@ -41,7 +41,7 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
         }
 
         [HttpGet]
-        [Route("User/{userId}/Note/{noteId}")]
+        [Route("Users/{userId}/Notes/{noteId}")]
         public IActionResult GetNoteById(int userId, int noteId)
         {
             try
@@ -60,7 +60,7 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
         }
 
         [HttpPost]
-        [Route("User/{userId}/Note")]
+        [Route("Users/{userId}/Notes")]
         public IActionResult AddNote(int userId, [FromBody]NoteToAddDto noteToAddDto)
         {
             try
@@ -75,7 +75,7 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
         }
 
         [HttpPut]
-        [Route("User/{userId}/Note/{noteId}")]
+        [Route("Users/{userId}/Notes/{noteId}")]
         public IActionResult UpdateNote(int userId, int noteId, [FromBody] NoteDto noteToUpdate)
         {
             try
@@ -98,7 +98,7 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("User/{userId}/Note/{noteId}")]
+        [Route("Users/{userId}/Notes/{noteId}")]
         public IActionResult DeleteNote(int userId, int noteId)
         {
             try

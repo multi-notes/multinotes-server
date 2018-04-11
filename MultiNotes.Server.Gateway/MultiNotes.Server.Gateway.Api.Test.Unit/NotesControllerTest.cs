@@ -12,15 +12,15 @@ using Xunit;
 
 namespace MultiNotes.Server.Gateway.Api.Test.Unit
 {
-    public class NoteControllerTest
+    public class NotesControllerTest
     {
-        private readonly NoteController _noteController;
+        private readonly NotesController _notesController;
         private readonly Mock<INoteService> _noteServiceMock;
 
-        public NoteControllerTest()
+        public NotesControllerTest()
         {
             _noteServiceMock = new Mock<INoteService>();
-            _noteController = new NoteController(_noteServiceMock.Object);
+            _notesController = new NotesController(_noteServiceMock.Object);
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.GetAllUsersNotes(It.IsAny<int>()))
                 .Returns(exampleNotesList);
 
-            var result = _noteController.GetAllNotes(exampleUserId);
+            var result = _notesController.GetAllNotes(exampleUserId);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -48,7 +48,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.GetAllUsersNotes(It.IsAny<int>()))
                 .Throws(new UserNotFoundException());
 
-            var result = _noteController.GetAllNotes(exampleUserId);
+            var result = _notesController.GetAllNotes(exampleUserId);
 
             Assert.NotNull(result);
             Assert.IsType<BadRequestObjectResult>(result);
@@ -66,7 +66,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.GetUserNote(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(exampleNoteDto);
 
-            var result = _noteController.GetNoteById(exampleUserId, exampleNoteId);
+            var result = _notesController.GetNoteById(exampleUserId, exampleNoteId);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -84,7 +84,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.GetUserNote(It.IsAny<int>(), It.IsAny<int>()))
                 .Throws(new UserNotFoundException());
 
-            var result = _noteController.GetNoteById(exampleUserId, exampleNoteId);
+            var result = _notesController.GetNoteById(exampleUserId, exampleNoteId);
 
             Assert.NotNull(result);
             Assert.IsType<BadRequestObjectResult>(result);
@@ -102,7 +102,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.GetUserNote(It.IsAny<int>(), It.IsAny<int>()))
                 .Throws(new NoteNotFoundException());
 
-            var result = _noteController.GetNoteById(exampleUserId, exampleNoteId);
+            var result = _notesController.GetNoteById(exampleUserId, exampleNoteId);
 
             Assert.NotNull(result);
             Assert.IsType<NotFoundObjectResult>(result);
@@ -119,7 +119,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.AddUserNote(It.IsAny<int>(), It.IsAny<NoteToAddDto>()))
                 .Returns(exampleNoteDto);
 
-            var result = _noteController.AddNote(exampleUserId, exampleNoteToAddDto);
+            var result = _notesController.AddNote(exampleUserId, exampleNoteToAddDto);
 
             Assert.NotNull(result);;
             Assert.IsType<OkObjectResult>(result);
@@ -135,7 +135,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.AddUserNote(It.IsAny<int>(), It.IsAny<NoteToAddDto>()))
                 .Throws(new UserNotFoundException());
 
-            var result = _noteController.AddNote(exampleUserId, exampleNoteToAddDto);
+            var result = _notesController.AddNote(exampleUserId, exampleNoteToAddDto);
 
             Assert.NotNull(result); ;
             Assert.IsType<BadRequestObjectResult>(result);
@@ -152,7 +152,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.UpdateUserNote(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<NoteDto>()))
                 .Returns(exampleNoteDto);
 
-            var result = _noteController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
+            var result = _notesController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
 
             Assert.NotNull(result);
             Assert.IsType<OkObjectResult>(result);
@@ -169,7 +169,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.UpdateUserNote(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<NoteDto>()))
                 .Throws(new UserNotFoundException());
 
-            var result = _noteController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
+            var result = _notesController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
 
             Assert.NotNull(result);
             Assert.IsType<BadRequestObjectResult>(result);
@@ -186,7 +186,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.UpdateUserNote(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<NoteDto>()))
                 .Throws(new NoteNotFoundException());
 
-            var result = _noteController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
+            var result = _notesController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
 
             Assert.NotNull(result);
             Assert.IsType<NotFoundObjectResult>(result);
@@ -203,7 +203,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.UpdateUserNote(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<NoteDto>()))
                 .Throws(new ArgumentException());
 
-            var result = _noteController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
+            var result = _notesController.UpdateNote(exampleUserId, exampleNoteId, exampleNoteDto);
 
             Assert.NotNull(result);
             Assert.IsType<BadRequestObjectResult>(result);
@@ -219,7 +219,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
             _noteServiceMock
                 .Setup(x => x.DeleteUserNote(It.IsAny<int>(), It.IsAny<int>()));
 
-            var result =_noteController.DeleteNote(exampleUserId, exampleNoteId);
+            var result =_notesController.DeleteNote(exampleUserId, exampleNoteId);
 
             Assert.NotNull(result);
             Assert.IsType<NoContentResult>(result);
@@ -236,7 +236,7 @@ namespace MultiNotes.Server.Gateway.Api.Test.Unit
                 .Setup(x => x.DeleteUserNote(It.IsAny<int>(), It.IsAny<int>()))
                 .Throws(new UserNotFoundException());
 
-            var result = _noteController.DeleteNote(exampleUserId, exampleNoteId);
+            var result = _notesController.DeleteNote(exampleUserId, exampleNoteId);
 
             Assert.NotNull(result);
             Assert.IsType<BadRequestObjectResult>(result);

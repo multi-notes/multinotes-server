@@ -14,12 +14,12 @@ namespace MultiNotes.Server.Gateway.Api.Controllers
     //todo: add authorization
     //todo: generic error handling
     [Produces("application/json")]
-    [Route("api/User")]
-    public class UserController : Controller
+    [Route("api/Users")]
+    public class UsersController : Controller
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }
