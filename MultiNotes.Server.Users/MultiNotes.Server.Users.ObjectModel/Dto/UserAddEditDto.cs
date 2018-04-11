@@ -4,11 +4,12 @@ using System.Text;
 
 namespace MultiNotes.Server.Users.ObjectModel.Dto
 {
-    public class UserToAddDto
+    public class UserAddEditDto
     {
-        public UserToAddDto()
+        public UserAddEditDto()
         {
             throw new NotImplementedException();
+            //todo: use Automapper
         }
 
         public string Username { get; set; }

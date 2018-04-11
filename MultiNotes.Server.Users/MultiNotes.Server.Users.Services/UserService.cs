@@ -10,12 +10,12 @@ using MultiNotes.Server.Users.Services.Interfaces;
 
 namespace MultiNotes.Server.Users.Services
 {
+    //todo: add locks and single instance in DI while adding and editing if DB doesn't support transactions and unique indexes
     public class UserService : IUserService
     {
         private readonly IPasswordService _passwordService;
         private readonly IUserQuery _userQuery;
         private readonly IUserCommand _userCommand;
-        private object userBeingAdded;
 
         public UserService(IPasswordService passwordService, IUserQuery userQuery, IUserCommand userCommand)
         {
@@ -24,59 +24,95 @@ namespace MultiNotes.Server.Users.Services
             _userCommand = userCommand;
         }
 
-        public User AddUser(UserToAddDto userToAddDto)
+        public User AddUser(UserAddEditDto userAddEditDto)
         {
             //todo: think about encoding password by base64
 
-            if (!ValidateEmail(userToAddDto.Email))
+            if (!ValidateEmail(userAddEditDto.Email))
             {
                 throw new ArgumentException("Invalid email address!");
             }
 
-            if (!_userQuery.CheckIfEmailAvailable(userToAddDto.Email))
+            if (!_userQuery.CheckIfEmailAvailable(userAddEditDto.Email))
             {
-                throw new UserAlreadExistsException($"User with email address {userToAddDto.Email} already exists!");
+                throw new UserAlreadExistsException($"User with email address {userAddEditDto.Email} already exists!");
             }
 
-            var passwordHash = _passwordService.GetPasswordHash(userToAddDto.Password);
+            var passwordHash = _passwordService.GetPasswordHash(userAddEditDto.Password);
 
-            User newUser;
-            lock (userBeingAdded)
-            {
-                var userId = _userQuery.GetNextUserId();
-                newUser = new User(userId, userToAddDto.Username, userToAddDto.Email, passwordHash);
-                _userCommand.AddUser(newUser);
-            }
+            var userId = _userQuery.GetNextUserId();
+            var newUser = new User(userId, userAddEditDto.Username, userAddEditDto.Email, passwordHash);
+            _userCommand.AddUser(newUser);
 
             return newUser;
         }
 
         public void DeleteUser(int userId)
         {
-            throw new NotImplementedException();
+            var user = GetUserById(userId);
+            _userCommand.DeleteUser(user);
         }
 
         public User GetUserById(int userId)
         {
-            throw new NotImplementedException();
+            var user = _userQuery.GetUserById(userId);
+            if (user == null)
+            {
+                throw new UserNotFoundException("User with given id doesn't exist!");
+            }
+
+            return user;
         }
 
-        public User UpdateUser(UserDto userDto)
+        public User UpdateUser(int userId, UserAddEditDto userDto)
         {
-            throw new NotImplementedException();
+            var user = GetUserById(userId);
+            //todo: use automapper?
+
+            if (!user.Username.Equals(userDto.Email))
+                ChangeUsername(user, userDto.Username);
+            if (!user.Email.Equals(userDto.Email))
+                ChangeEmailAddress(user, userDto.Email);
+            if (!_passwordService.VerifyPassword(userDto.Password, user.PasswordHash))
+                ChangePassword(user, userDto.Username);
+
+            _userCommand.UpdateUser(user);
+            return user;
         }
 
-        private static bool ValidateEmail(string email)
+        private bool ValidateEmail(string email)
         {
             try
             {
                 new MailAddress(email);
+                _userQuery.CheckIfEmailAvailable(email);
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
+        }
+
+        private void ChangeUsername(User user, string newUsername)
+        {
+            user.Username = newUsername;
+        }
+
+        private void ChangeEmailAddress(User user, string newEmailAddress)
+        {
+            if (!ValidateEmail(newEmailAddress))
+            {
+                throw new UserAlreadExistsException($"User with email address {newEmailAddress} already exists!");
+            }
+
+            user.Email = newEmailAddress;
+        }
+
+        private void ChangePassword(User user, string newPassword)
+        {
+            var newHash = _passwordService.GetPasswordHash(newPassword);
+            user.PasswordHash = newHash;
         }
     }
 }

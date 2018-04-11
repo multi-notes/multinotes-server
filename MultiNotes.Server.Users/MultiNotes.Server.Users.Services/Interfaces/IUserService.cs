@@ -8,9 +8,9 @@ namespace MultiNotes.Server.Users.Services.Interfaces
 {
     public interface IUserService
     {
-        User AddUser(UserToAddDto userToAddDto);
+        User AddUser(UserAddEditDto userAddEditDto);
         void DeleteUser(int userId);
         User GetUserById(int userId);
-        User UpdateUser(UserDto userDto);
+        User UpdateUser(int userId, UserAddEditDto userDto);
     }
 }
