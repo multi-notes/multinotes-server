@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Users.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Common", "MultiNotes.Server.Common\MultiNotes.Server.Common.csproj", "{0F1C3B14-6834-4D10-B8F5-A0159FCE7EFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiNotes.Server.Users.ObjectModel.Test.Unit", "MultiNotes.Server.Users\MultiNotes.Server.Users.ObjectModel.Test.Unit\MultiNotes.Server.Users.ObjectModel.Test.Unit.csproj", "{41CEF6C6-EF2A-4202-9711-654EAE1A7500}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiNotes.Server.Users.Services.Test.Unit", "MultiNotes.Server.Users\MultiNotes.Server.Users.Services.Test.Unit\MultiNotes.Server.Users.Services.Test.Unit.csproj", "{450833DD-9D34-4940-B401-AA6134493179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{0F1C3B14-6834-4D10-B8F5-A0159FCE7EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F1C3B14-6834-4D10-B8F5-A0159FCE7EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F1C3B14-6834-4D10-B8F5-A0159FCE7EFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CEF6C6-EF2A-4202-9711-654EAE1A7500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CEF6C6-EF2A-4202-9711-654EAE1A7500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CEF6C6-EF2A-4202-9711-654EAE1A7500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CEF6C6-EF2A-4202-9711-654EAE1A7500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450833DD-9D34-4940-B401-AA6134493179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450833DD-9D34-4940-B401-AA6134493179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450833DD-9D34-4940-B401-AA6134493179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450833DD-9D34-4940-B401-AA6134493179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

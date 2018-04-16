@@ -23,6 +23,7 @@ namespace MultiNotes.Server.Users.ObjectModel.Dto
                     .Where((s, d) => s.Name == d.Name + "Dto");*/
 
                 CreateMap<User, UserDto>();
+                //    .ForSourceMember(x => x.PasswordHash, opt => opt.Ignore());
             }
         }
 
@@ -30,7 +31,7 @@ namespace MultiNotes.Server.Users.ObjectModel.Dto
         {
             public UsersDtoToObjectModel()
             {
-                CreateMap<UserDto, User>();
+
             }
         }
     }
