@@ -13,7 +13,5 @@ namespace MultiNotes.Server.Users.Services
         {
             return BCrypt.Net.BCrypt.Verify(password, hash);
         }
-
-        //todo: check password strength, verify through most recently used
     }
 }

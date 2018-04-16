@@ -2,16 +2,18 @@
 
 namespace MultiNotes.Server.Users.ObjectModel.Dto
 {
-    public class UserDto
+    //todo: check if webapi controllers require setters in props
+    public sealed class UserDto
     {
-        public UserDto()
+        public UserDto(int id, string username, string email)
         {
-            throw new NotImplementedException();
-            //todo: use Automapper
+            Id = id;
+            Username = username;
+            Email = email;
         }
 
         public int Id { get; }
-        public string Username { get; set; }
-        public string Email { get; set; }
+        public string Username { get; }
+        public string Email { get; }
     }
 }

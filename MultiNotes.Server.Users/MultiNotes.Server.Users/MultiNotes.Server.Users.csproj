@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MultiNotes.Server.Users.Services\MultiNotes.Server.Users.Services.csproj" />
+  </ItemGroup>
+
 </Project>

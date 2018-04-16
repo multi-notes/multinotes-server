@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
+using AutoMapper;
 using MultiNotes.Server.Users.DataAccess.Interfaces;
 using MultiNotes.Server.Users.ObjectModel;
 using MultiNotes.Server.Users.ObjectModel.Dto;
@@ -11,15 +12,17 @@ namespace MultiNotes.Server.Users.Services
     //todo: add locks and single instance in DI while adding and editing if DB doesn't support transactions and unique indexes
     public class UserService : IUserService
     {
+        private readonly IMapper _mapper;
         private readonly IPasswordService _passwordService;
         private readonly IUserQuery _userQuery;
         private readonly IUserCommand _userCommand;
 
-        public UserService(IPasswordService passwordService, IUserQuery userQuery, IUserCommand userCommand)
+        public UserService(IPasswordService passwordService, IUserQuery userQuery, IUserCommand userCommand, IMapper mapper)
         {
             _passwordService = passwordService;
             _userQuery = userQuery;
             _userCommand = userCommand;
+            _mapper = mapper;
         }
 
         public User AddUser(UserAddEditDto userAddEditDto)
@@ -65,7 +68,6 @@ namespace MultiNotes.Server.Users.Services
         public User UpdateUser(int userId, UserAddEditDto userDto)
         {
             var user = GetUserById(userId);
-            //todo: use automapper?
 
             if (!user.Username.Equals(userDto.Email))
                 ChangeUsername(user, userDto.Username);
