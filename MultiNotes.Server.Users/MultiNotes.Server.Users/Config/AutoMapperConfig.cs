@@ -7,12 +7,14 @@ namespace MultiNotes.Server.Users.Config
 {
     static class AutoMapperConfig
     {
-        static void ConfigureAutoMapper()
+        public static IMapper ConfigureMapper()
         {
-            throw new NotImplementedException();
-            //todo: configure DI
-            //var mapperConfig = new MapperConfiguration();
-            //IMapper mapper = mapperConfig.CreateMapper(); //include into DI
+            var mappingExpression = Users.ObjectModel.Dto.MappingConfig.GetMappingExpression();
+
+            var mapperConfig = new MapperConfiguration(mappingExpression);
+            var mapper = mapperConfig.CreateMapper();
+
+            return mapper;
         }
     }
 }

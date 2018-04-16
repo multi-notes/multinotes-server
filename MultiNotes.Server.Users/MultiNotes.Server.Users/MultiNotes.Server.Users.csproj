@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MultiNotes.Server.Users.Services\MultiNotes.Server.Users.Services.csproj" />
   </ItemGroup>
 
