@@ -77,6 +77,7 @@ namespace MultiNotes.Server.Users.Services
                 ChangePassword(user, userDto.Username);
 
             _userCommand.UpdateUser(user);
+
             return user;
         }
 
