@@ -2,6 +2,7 @@
 using Autofac;
 using AutoMapper;
 using MultiNotes.Server.Users.Config;
+using MultiNotes.Server.Users.DataAccess.MongoDB.Config;
 
 namespace MultiNotes.Server.Users
 {
@@ -14,6 +15,7 @@ namespace MultiNotes.Server.Users
         {
             Mapper = AutoMapperConfig.ConfigureMapper();
             Container = AutofacConfig.ConfigureContainer(Mapper);
+            MongoDbConfig.Configure("test", "MultiNotes");
 
             throw new NotImplementedException();
         }
