@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Users.Obj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Users.Services.Test.Unit", "MultiNotes.Server.Users\MultiNotes.Server.Users.Services.Test.Unit\MultiNotes.Server.Users.Services.Test.Unit.csproj", "{450833DD-9D34-4940-B401-AA6134493179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiNotes.Server.Users.DataAccess.MongoDB", "MultiNotes.Server.Users.DataAccess.MongoDB\MultiNotes.Server.Users.DataAccess.MongoDB.csproj", "{B86FB525-A604-47BA-9A4A-6DD041D4E956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiNotes.Server.Users.DataAccess.MongoDB", "MultiNotes.Server.Users\MultiNotes.Server.Users.DataAccess.MongoDB\MultiNotes.Server.Users.DataAccess.MongoDB.csproj", "{137DF155-88D5-4CAF-8166-112E703D2693}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiNotes.Server.Users.DataAccess.MongoDB.Test.Integration", "MultiNotes.Server.Users\MultiNotes.Server.Users.DataAccess.MongoDB.Test.Integration\MultiNotes.Server.Users.DataAccess.MongoDB.Test.Integration.csproj", "{402806DF-BE4B-42BA-B1C6-665D38B73D73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +55,14 @@ Global
 		{450833DD-9D34-4940-B401-AA6134493179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{450833DD-9D34-4940-B401-AA6134493179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{450833DD-9D34-4940-B401-AA6134493179}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B86FB525-A604-47BA-9A4A-6DD041D4E956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B86FB525-A604-47BA-9A4A-6DD041D4E956}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B86FB525-A604-47BA-9A4A-6DD041D4E956}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B86FB525-A604-47BA-9A4A-6DD041D4E956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137DF155-88D5-4CAF-8166-112E703D2693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137DF155-88D5-4CAF-8166-112E703D2693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137DF155-88D5-4CAF-8166-112E703D2693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137DF155-88D5-4CAF-8166-112E703D2693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402806DF-BE4B-42BA-B1C6-665D38B73D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402806DF-BE4B-42BA-B1C6-665D38B73D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402806DF-BE4B-42BA-B1C6-665D38B73D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402806DF-BE4B-42BA-B1C6-665D38B73D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,9 +9,9 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB
     {
         private readonly IMongoCollection<User> _userCollection;
 
-        public UserQuery()
+        public UserQuery(IMongoDatabase db)
         {
-            _userCollection = CollectionsManager.GetUserCollection();
+            _userCollection = db.GetCollection<User>(nameof(User));
         }
 
         public bool CheckIfEmailAvailable(string emailAddress)

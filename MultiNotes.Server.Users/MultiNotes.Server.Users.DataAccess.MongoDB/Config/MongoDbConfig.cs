@@ -1,5 +1,4 @@
 ﻿using System;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Bson.Serialization.Serializers;
@@ -10,23 +9,14 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB.Config
 {
     public static class MongoDbConfig
     {
-        private static IMongoDatabase _db;
+        private static IMongoDatabase _db;      
 
-        public static IMongoDatabase Database
-        {
-            get
-            {
-                if (_db == null)
-                    throw new NullReferenceException("DB has not been configured yet!");
-                return _db;
-            }
-        }       
-
-        public static void Configure(string connectionString, string dbName)
+        public static IMongoDatabase Configure(string connectionString, string dbName)
         {
             ConfigureDatabase(connectionString, dbName);
             CreateMappings();
             CreateIndexes();
+            return _db;
         }
 
         private static void ConfigureDatabase(string connectionString, string dbName)
@@ -51,7 +41,7 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB.Config
 
         private static void CreateIndexes()
         {
-            var userCollection = CollectionsManager.GetUserCollection();
+            var userCollection = _db.GetCollection<User>(nameof(User));
             var uniqueIndexOptions = new CreateIndexOptions() { Unique = true };
             userCollection.Indexes.CreateOneAsync(Builders<User>.IndexKeys.Ascending(x => x.Email), uniqueIndexOptions);
         }

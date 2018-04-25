@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MultiNotes.Server.Users.DataAccess.MongoDB\MultiNotes.Server.Users.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\MultiNotes.Server.Users.DataAccess.MongoDB\MultiNotes.Server.Users.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\MultiNotes.Server.Users.Services\MultiNotes.Server.Users.Services.csproj" />
   </ItemGroup>
 
