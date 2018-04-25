@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Bson.Serialization.Serializers;
@@ -31,11 +32,11 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB.Config
             BsonClassMap.RegisterClassMap<User>(cm =>
             {
                 cm.AutoMap();
-                cm.MapCreator(x => new User(x.Username, x.Email, x.PasswordHash));
+                cm.MapCreator(x => new User(x.Id, x.Username, x.Email, x.PasswordHash, x.RegistrationDateTime));
                 cm.MapIdMember(x => x.Id)
                     .SetIdGenerator(CombGuidGenerator.Instance);
                 cm.MapMember(x => x.RegistrationDateTime)
-                    .SetSerializer(new DateTimeSerializer(DateTimeKind.Local));
+                    .SetSerializer(new DateTimeSerializer(DateTimeKind.Local, BsonType.Document));
             });
         }
 

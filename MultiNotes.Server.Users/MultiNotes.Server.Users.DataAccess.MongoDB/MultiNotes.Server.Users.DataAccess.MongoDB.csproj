@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MultiNotes.Server.Users.DataAccess\MultiNotes.Server.Users.DataAccess.csproj" />
-    <ProjectReference Include="..\MultiNotes.Server.Users\MultiNotes.Server.Users.DataAccess\MultiNotes.Server.Users.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

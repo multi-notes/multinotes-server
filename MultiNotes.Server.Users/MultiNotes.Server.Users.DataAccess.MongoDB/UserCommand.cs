@@ -21,7 +21,7 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB
 
         public void DeleteUser(User user)
         {
-            _userCollection.DeleteOne(x => x.Equals(user));
+            _userCollection.DeleteOne(x => x.Id.Equals(user.Id));
         }
 
         public void UpdateUser(User user)

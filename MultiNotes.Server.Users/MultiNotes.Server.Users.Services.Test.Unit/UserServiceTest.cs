@@ -79,8 +79,8 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void GetUserByIdReturnsUserIfUserExists()
         {
-            var exampleUserId = Guid.NewGuid();
-            var expectedUser = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
+            var expectedUser = new User("test", "test@test.com", "dfadsfads");
+            var exampleUserId = expectedUser.Id;
 
             _userQueryMock
                 .Setup(x => x.GetUserById(It.IsAny<Guid>()))
@@ -107,9 +107,8 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void DeleteUserDoesntThrowExceptionsWhenUserExists()
         {
-            var exampleUserId = Guid.NewGuid();
-
-            var expectedUser = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
+            var expectedUser = new User("test", "test@test.com", "dfadsfads");
+            var exampleUserId = expectedUser.Id;
 
             _userQueryMock
                 .Setup(x => x.GetUserById(It.IsAny<Guid>()))
@@ -138,8 +137,8 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         {
             var exampleUserId = Guid.NewGuid();
             var exampleUserAddEditDto = new UserAddEditDto("dfadsf", "fadsf@fdasfd.com", "fdad");
-            var userBeingUpdated = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
-            var userBeforeUpdate = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
+            var userBeingUpdated = new User(exampleUserId, "test", "test@test.com", "dfadsfads", DateTime.Now);
+            var userBeforeUpdate = new User(exampleUserId, "test", "test@test.com", "dfadsfads", DateTime.Now);
 
             _userQueryMock
                 .Setup(x => x.GetUserById(It.IsAny<Guid>()))
