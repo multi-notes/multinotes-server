@@ -79,11 +79,11 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void GetUserByIdReturnsUserIfUserExists()
         {
-            const int exampleUserId = 1;
+            var exampleUserId = Guid.NewGuid();
             var expectedUser = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
 
             _userQueryMock
-                .Setup(x => x.GetUserById(It.IsAny<int>()))
+                .Setup(x => x.GetUserById(It.IsAny<Guid>()))
                 .Returns(expectedUser);
 
             var result = _userService.GetUserById(exampleUserId);
@@ -95,10 +95,10 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void GetUserByIdThrowsUserNotFoundExceptionIfUserNotExists()
         {
-            const int exampleUserId = 1;
+            var exampleUserId = Guid.NewGuid();
 
             _userQueryMock
-                .Setup(x => x.GetUserById(It.IsAny<int>()))
+                .Setup(x => x.GetUserById(It.IsAny<Guid>()))
                 .Returns<User>(null);
 
             Assert.Throws<UserNotFoundException>(()=> _userService.GetUserById(exampleUserId));
@@ -107,12 +107,12 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void DeleteUserDoesntThrowExceptionsWhenUserExists()
         {
-            const int exampleUserId = 1;
+            var exampleUserId = Guid.NewGuid();
 
             var expectedUser = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
 
             _userQueryMock
-                .Setup(x => x.GetUserById(It.IsAny<int>()))
+                .Setup(x => x.GetUserById(It.IsAny<Guid>()))
                 .Returns(expectedUser);
 
             _userCommandMock
@@ -124,10 +124,10 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void DeleteUserThrowsUserNotFoundExceptionWhenUserWithGivenItDoesntExist()
         {
-            const int exampleUserId = 1;
+            var exampleUserId = Guid.NewGuid();
 
             _userQueryMock
-                .Setup(x => x.GetUserById(It.IsAny<int>()))
+                .Setup(x => x.GetUserById(It.IsAny<Guid>()))
                 .Returns<User>(null);
 
             Assert.Throws<UserNotFoundException>(() => _userService.DeleteUser(exampleUserId));
@@ -136,13 +136,13 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void UpdateUserReturnsUser()
         {
-            const int exampleUserId = 1;
+            var exampleUserId = Guid.NewGuid();
             var exampleUserAddEditDto = new UserAddEditDto("dfadsf", "fadsf@fdasfd.com", "fdad");
             var userBeingUpdated = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
             var userBeforeUpdate = new User(exampleUserId, "test", "test@test.com", "dfadsfads");
 
             _userQueryMock
-                .Setup(x => x.GetUserById(It.IsAny<int>()))
+                .Setup(x => x.GetUserById(It.IsAny<Guid>()))
                 .Returns(userBeingUpdated);
 
             _userCommandMock
@@ -158,11 +158,11 @@ namespace MultiNotes.Server.Users.Services.Test.Unit
         [Fact]
         public void UpdateUserThrowsUserNotFoundExceptionWhenUserWithGivenIdDoesntExist()
         {
-            const int exampleUserId = 1;
+            var exampleUserId = Guid.NewGuid();
             var exampleUserAddEditDto = new UserAddEditDto("dfadsf", "fadsf@fdasfd.com", "fdad");
 
             _userQueryMock
-                .Setup(x => x.GetUserById(It.IsAny<int>()))
+                .Setup(x => x.GetUserById(It.IsAny<Guid>()))
                 .Returns<User>(null);
 
             Assert.Throws<UserNotFoundException>(() => _userService.UpdateUser(exampleUserId, exampleUserAddEditDto));

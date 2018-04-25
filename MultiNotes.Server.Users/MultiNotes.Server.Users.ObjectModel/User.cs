@@ -4,16 +4,20 @@ namespace MultiNotes.Server.Users.ObjectModel
 {
     public class User
     {
-        public User(int id, string username, string email, string passwordHash)
+        public User(Guid id, string username, string email, string passwordHash)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Username = username;
             Email = email;
             PasswordHash = passwordHash;
             RegistrationDateTime = DateTime.Now;
         }
 
-        public int Id { get; }
+        public User(string username, string email, string passwordHash) : this(Guid.NewGuid(), username, email, passwordHash)
+        {
+        }
+
+        public Guid Id { get; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }

@@ -11,22 +11,22 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB
 
         public UserCommand()
         {
-            _userCollection = CollectionsManager.GetUserCollection(); //todo: try to get rid of this static class
+            _userCollection = CollectionsManager.GetUserCollection();
         }
 
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            _userCollection.InsertOne(user);
         }
 
         public void DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            _userCollection.DeleteOne(x => x.Equals(user));
         }
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _userCollection.ReplaceOne(x => x.Id.Equals(user.Id), user);
         }
     }
 }

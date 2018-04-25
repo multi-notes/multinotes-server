@@ -11,22 +11,22 @@ namespace MultiNotes.Server.Users.DataAccess.MongoDB
 
         public UserQuery()
         {
-            _userCollection = CollectionsManager.GetUserCollection(); //todo: try to get rid of this static class
-        }
-
-        public int GetNextUserId()
-        {
-            throw new NotImplementedException();
+            _userCollection = CollectionsManager.GetUserCollection();
         }
 
         public bool CheckIfEmailAvailable(string emailAddress)
         {
-            throw new NotImplementedException();
+            var user = _userCollection
+                .FindSync(x => x.Email.Equals(emailAddress))
+                .FirstOrDefault();
+            return user == null;
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(Guid id)
         {
-            throw new NotImplementedException();
+            return _userCollection
+                .FindSync(x => x.Id.Equals(id))
+                .SingleOrDefault();
         }
     }
 }

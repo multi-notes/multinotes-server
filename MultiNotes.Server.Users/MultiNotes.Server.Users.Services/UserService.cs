@@ -41,20 +41,19 @@ namespace MultiNotes.Server.Users.Services
 
             var passwordHash = _passwordService.GetPasswordHash(userAddEditDto.Password);
 
-            var userId = _userQuery.GetNextUserId();
-            var newUser = new User(userId, userAddEditDto.Username, userAddEditDto.Email, passwordHash);
+            var newUser = new User(userAddEditDto.Username, userAddEditDto.Email, passwordHash);
             _userCommand.AddUser(newUser);
 
             return newUser;
         }
 
-        public void DeleteUser(int userId)
+        public void DeleteUser(Guid userId)
         {
             var user = GetUserById(userId);
             _userCommand.DeleteUser(user);
         }
 
-        public User GetUserById(int userId)
+        public User GetUserById(Guid userId)
         {
             var user = _userQuery.GetUserById(userId);
             if (user == null)
@@ -65,7 +64,7 @@ namespace MultiNotes.Server.Users.Services
             return user;
         }
 
-        public User UpdateUser(int userId, UserAddEditDto userDto)
+        public User UpdateUser(Guid userId, UserAddEditDto userDto)
         {
             var user = GetUserById(userId);
 

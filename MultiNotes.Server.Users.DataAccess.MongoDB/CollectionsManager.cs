@@ -10,6 +10,7 @@ using MultiNotes.Server.Users.ObjectModel;
 
 namespace MultiNotes.Server.Users.DataAccess.MongoDB
 {
+    //todo: change this class to something more reasonable
     internal class CollectionsManager
     {
         public const string UserCollectionName = "Users";
