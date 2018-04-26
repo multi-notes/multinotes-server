@@ -8,27 +8,37 @@ using Xunit;
 
 namespace MultiNotes.Server.Users.DataAccess.MongoDB.Test.Integration
 {
-    public class CommandQueryTests : IDisposable
+    public class DatabaseFixture
     {
         private const string TestDatabaseName = "MultiNotes-Test";
 
-        private readonly IMongoDatabase _db;
+        public DatabaseFixture()
+        {
+            Database = MongoDbConfig.Configure("mongodb://localhost:27017", TestDatabaseName);
+        }
+
+        public IMongoDatabase Database { get; }
+    }
+
+    public class CommandQueryTests : IClassFixture<DatabaseFixture>, IDisposable
+    {
+        private readonly DatabaseFixture _dbFixture;     
         private readonly IUserQuery _userQuery;
         private readonly IUserCommand _userCommand;
         private readonly User _exampleUser;
 
-        public CommandQueryTests()
+        public CommandQueryTests(DatabaseFixture dbFixture)
         {
-            _db = MongoDbConfig.Configure("mongodb://localhost:27017", TestDatabaseName);
-            _userQuery = new UserQuery(_db);
-            _userCommand = new UserCommand(_db);
+            _dbFixture = dbFixture;
+            _userQuery = new UserQuery(_dbFixture.Database);
+            _userCommand = new UserCommand(_dbFixture.Database);
 
             _exampleUser = new User("testowy", "test@test.com", "dfadfadfafa");
         }
 
         public void Dispose()
         {
-            var collection = _db.GetCollection<User>(nameof(User));
+            var collection = _dbFixture.Database.GetCollection<User>(nameof(User));
 
             var oldUser = collection
                 .FindSync(x => x.Email.Equals(_exampleUser.Email))
